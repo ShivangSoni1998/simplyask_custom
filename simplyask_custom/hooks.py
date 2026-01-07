@@ -5,6 +5,7 @@ app_description = "Custom features for HRMS"
 app_email = "shivang.soni@simplyask.ai"
 app_license = "mit"
 
+
 # Apps
 # ------------------
 
@@ -26,7 +27,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/simplyask_custom/css/simplyask_custom.css"
-# app_include_js = "/assets/simplyask_custom/js/simplyask_custom.js"
+app_include_js = ["/assets/simplyask_custom/js/home_banner_injection.js"]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/simplyask_custom/css/simplyask_custom.css"
@@ -121,9 +122,9 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+has_permission = {
+    "Employee": "simplyask_custom.permissions.employee_has_permission"
+}
 
 # DocType Class
 # ---------------
@@ -137,13 +138,12 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "Employee": {
+        "onload": "simplyask_custom.permissions.hide_sensitive_fields",
+        "validate": "simplyask_custom.permissions.prevent_unauthorized_edits"
+    }
+}
 
 # Scheduled Tasks
 # ---------------

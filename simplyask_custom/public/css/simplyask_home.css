@@ -1,0 +1,44 @@
+/* Force full width by removing standard padding */
+.layout-main-section {
+    padding: 0px !important;
+    border: none !important;
+}
+
+.hero-banner {
+    background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    border-radius: 0 0 16px 16px;
+    position: relative;
+}
+
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 16px 16px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: #f0f0f0;
+}
