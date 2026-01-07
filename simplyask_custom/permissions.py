@@ -26,14 +26,10 @@ def prevent_unauthorized_edits(doc, method):
         frappe.throw(_("You are not authorized to edit other employees' profiles."))
 
 def hide_sensitive_fields(doc, method):
-    # --- DEBUG PRINT ---
-    print(f"\n[DEBUG] Hiding Fields? User={frappe.session.user} | Doc Owner={doc.user_id}")
 
     if frappe.session.user == "Administrator" or doc.user_id == frappe.session.user:
-        print("[DEBUG] Showing everything (Admin or Self).")
         return
 
-    print("[DEBUG] Hiding sensitive data...")
     
     # Fields to hide
     sensitive_fields = [
