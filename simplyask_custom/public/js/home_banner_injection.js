@@ -49,7 +49,7 @@ function inject_banner_html($container) {
     </div>
     <style>
         .simplyask-banner {
-            background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop'); 
+            background-image: url('/assets/simplyask_custom/images/simplyask_banner.png'); 
             background-size: cover;
             background-position: center;
             height: 220px; 
