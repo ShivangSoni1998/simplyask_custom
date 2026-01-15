@@ -1,0 +1,173 @@
+/* simplyask_theme.css - Navbar Fixes + Workspace Polish */
+
+/* --- 0. GLOBAL TYPOGRAPHY --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --font-stack: 'Inter', sans-serif !important;
+    --font-family-sans-serif: 'Inter', sans-serif !important;
+    --navbar-bg: #4C4C4C !important;
+}
+
+body, html, .app-page, .main-section, .content {
+    font-family: 'Inter', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    color: #1F2937 !important;
+    font-size: 15px !important;
+}
+
+/* --- 1. Navbar Styling --- */
+header.navbar {
+    background-color: var(--navbar-bg) !important;
+    border-bottom: 1px solid #333 !important;
+}
+
+/* 2. Navbar Text -> WHITE */
+.navbar-light .navbar-nav .nav-link, 
+.navbar-light .navbar-brand {
+    color: #ffffff !important;
+}
+
+/* 3. Help Button Fix */
+.navbar-nav .nav-item .btn-reset {
+    color: #ffffff !important;
+}
+
+/* 4. Bell Icon & SVG Fixes */
+.navbar-nav .nav-link svg {
+    stroke: #ffffff !important;
+    fill: none !important;
+}
+
+/* 5. The Tiny Arrow (Next to Help) */
+.navbar-nav .nav-link .icon-xs,
+.navbar-nav .nav-link .icon-xs use {
+    stroke: none !important;
+    fill: #ffffff !important;
+}
+
+/* --- SAFETY: Keep Dropdowns Readable --- */
+.dropdown-menu .dropdown-item, 
+.dropdown-menu .btn-reset, 
+.dropdown-menu svg,
+.dropdown-menu span {
+    color: #333333 !important;
+    fill: #333333 !important;
+    stroke: #333333 !important;
+}
+
+
+/* =========================================
+   NEW: BUTTON THEME (simplyask Orange)
+   ========================================= */
+
+/* --- 1. TARGET ALL BUTTONS (Primary, Secondary, Default) --- */
+/* We group all selectors together to force them to look identical */
+button.btn-primary, .btn-primary, .primary-action,
+button.btn-secondary, .btn-secondary,
+button.btn-default, .btn-default {
+    background-color: #ff9205 !important; /* HiBob Orange */
+    border-color: #ff9205 !important;     /* Orange Border */
+    color: #242424 !important;            /* Dark/Black Text */
+    fill: #242424 !important;             /* Icon Color */
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: background-color 0.2s ease;
+}
+
+/* --- 2. HOVER STATE (For All Buttons) --- */
+/* Slightly darker orange on hover */
+button.btn-primary:hover, .btn-primary:hover, .primary-action:hover,
+button.btn-secondary:hover, .btn-secondary:hover,
+button.btn-default:hover, .btn-default:hover {
+    background-color: #e58204 !important; 
+    border-color: #e58204 !important;
+    color: #000000 !important; /* Pure Black Text on Hover */
+}
+
+/* --- 3. ICON FIX (Force Black Icons) --- */
+/* Ensures SVG icons inside any button are black, not white */
+.btn-primary svg, .btn-secondary svg, .btn-default svg,
+.btn-primary .icon, .btn-secondary .icon, .btn-default .icon,
+.primary-action svg {
+    stroke: #242424 !important;
+    fill: none !important;
+}
+
+
+
+/* 1. The Card Container (Targeting .widget from your screenshot) */
+.links-widget-box {
+    background-color: #ffffff !important;       /* White Background */
+    border: 1px solid #e6e6e6 !important;       /* Very subtle border */
+    border-radius: 12px !important;             /* Nice rounded corners */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03) !important; /* Clean, soft shadow */
+    padding: 20px !important;                   /* Space inside the box */
+    margin-bottom: 24px !important;             /* Space between widgets */
+    height: 100% !important;                    /* Ensure same height in rows */
+    transition: all 0.2s ease;
+}
+
+/* 2. Hover Effect (Optional - makes it feel interactive) */
+.links-widget-box:hover {
+    transform: translateY(-2px);                /* Slight lift */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important; /* Deeper shadow */
+    border-color: #dcdcdc !important;
+}
+
+/* 3. The Widget Header (Title area) */
+.links-widget-box .widget-head {
+    margin-bottom: 16px !important;             /* Space between title and content */
+    border-bottom: 1px solid #f0f0f0 !important;/* Light separator line */
+    padding-bottom: 10px !important;
+    width: 100%;
+}
+
+/* 4. The Widget Title Text */
+.links-widget-box .widget-label {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #1F272E !important;                  /* Dark text */
+}
+
+/* --- FIX: WIDGET LINKS HOVER EFFECT --- */
+/* Target the specific classes from your screenshot */
+.links-widget-box .widget-body .link-item {
+    /* Make the link behave like a block we can style */
+    padding: 8px 12px !important; 
+    margin-left: -12px !important; /* Pull left so text stays aligned */
+    border-radius: 6px !important;
+    
+    /* Ensure colors are correct */
+    color: #1F272E !important;
+    text-decoration: none !important;
+    
+    /* Smooth transition */
+    transition: background-color 0.15s ease;
+    
+    /* Flexbox adjustments */
+    display: flex !important;
+    align-items: center !important;
+    width: calc(100% + 12px) !important; /* Expand slightly to the right */
+}
+
+/* The Grey Background on Hover */
+.links-widget-box .widget-body .link-item:hover {
+    background-color: #E2E6EA !important; /* Clean Light Grey */
+    color: #000000 !important;
+}
+
+/* Shortcut Cards (Top of page) */
+.shortcut-widget-box {
+    transition: all 0.2s ease;
+    border: 1px solid transparent !important;
+    background-color: #ffffff !important; 
+}
+
+.shortcut-widget-box:hover {
+    background-color: #F1F3F5 !important;
+    border-radius: 6px !important;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important;
+}
