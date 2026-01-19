@@ -97,6 +97,23 @@ header.navbar {
     color: #ffffff !important;
 }
 
+
+/* 2. APP NAVBAR LOGO (Top Left inside App) */
+/* We also force this via CSS just to be safe */
+.navbar-brand img {
+    content: url('/assets/simplyask_custom/images/simplyask_logo.svg') !important;
+    max-height: 35px !important;
+    width: auto !important;
+    vertical-align: middle !important;
+}
+
+/* 3. WEBSITE NAVBAR LOGO (Login Page Top Bar) */
+nav.navbar .navbar-brand img {
+    content: url('/assets/simplyask_custom/images/simplyask_logo.svg') !important;
+    max-height: 35px !important;
+    width: auto !important;
+}
+
 /* =========================================
    NEW: BUTTON THEME (simplyask Orange)
    ========================================= */

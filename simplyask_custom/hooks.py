@@ -34,7 +34,7 @@ fixtures = [
 ]
 
 # include js, css files in header of web template
-# web_include_css = "/assets/simplyask_custom/css/simplyask_custom.css"
+web_include_css = "/assets/simplyask_custom/css/loginPage.css"
 # web_include_js = "/assets/simplyask_custom/js/simplyask_custom.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -154,6 +154,17 @@ doc_events = {
         "validate": "simplyask_custom.permissions.prevent_unauthorized_edits"
     }
 }
+
+# simplyask_custom/hooks.py
+
+# 1. The Logo inside the Desk (Top Left)
+app_logo_url = "/assets/simplyask_custom/images/simplyask_logo.svg"
+
+# 2. The Favicon (Browser Tab Icon) - Optional but recommended
+favicon = "/assets/simplyask_custom/images/simplyask_logo.svg"
+
+# 3. The Splash Image (Loading Screen)
+splash_image = "/assets/simplyask_custom/images/simplyask_logo.svg"
 
 # Scheduled Tasks
 # ---------------
