@@ -29,6 +29,10 @@ app_license = "mit"
 app_include_css = "/assets/simplyask_custom/css/navbar.css"
 app_include_js = ["/assets/simplyask_custom/js/home_banner_injection.js"]
 
+fixtures = [
+    {"dt": "Website Settings", "filters": [["name", "=", "Website Settings"]]}
+]
+
 # include js, css files in header of web template
 # web_include_css = "/assets/simplyask_custom/css/simplyask_custom.css"
 # web_include_js = "/assets/simplyask_custom/js/simplyask_custom.js"
@@ -47,7 +51,11 @@ app_include_js = ["/assets/simplyask_custom/js/home_banner_injection.js"]
 doctype_js = {
     "Employee": "public/js/employee_custom.js"
 }
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {
+    "Employee": "public/js/employee_list.js",
+    "User": "public/js/user_list.js",
+    "Leave Application": "public/js/leave_application_list.js"
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 

@@ -29,7 +29,7 @@ header.navbar {
 }
 
 /* 3. Help Button Fix */
-.navbar-nav .nav-item .btn-reset {
+.navbar-nav .nav-item .nav-link{
     color: #ffffff !important;
 }
 
@@ -40,58 +40,108 @@ header.navbar {
 }
 
 /* 5. The Tiny Arrow (Next to Help) */
-.navbar-nav .nav-link .icon-xs,
-.navbar-nav .nav-link .icon-xs use {
+.navbar-nav .nav-item .btn-reset .nav-link .icon-xs,
+.navbar-nav .nav-item .btn-reset .nav-link .icon-xs use {
     stroke: none !important;
     fill: #ffffff !important;
 }
 
-/* --- SAFETY: Keep Dropdowns Readable --- */
-.dropdown-menu .dropdown-item, 
-.dropdown-menu .btn-reset, 
-.dropdown-menu svg,
-.dropdown-menu span {
+.dropdown-menu .dropdown-item,
+.dropdown-menu .btn-reset {
+    color: #333333 !important;            /* Dark Text */
+    background-color: #ffffff !important; /* Force White Background */
+    cursor: pointer !important;
+}
+
+/* 2. Target Icons/Spans inside those items */
+.dropdown-menu .dropdown-item svg,
+.dropdown-menu .dropdown-item span,
+.dropdown-menu .btn-reset svg,
+.dropdown-menu .btn-reset span {
     color: #333333 !important;
     fill: #333333 !important;
     stroke: #333333 !important;
 }
 
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .btn-reset:hover {
+    background-color: #F8F9FA !important;
+    color: #000000 !important;
+}
+
+/* =========================================
+   FIX: NAVBAR BREADCRUMBS (White Text)
+   ========================================= */
+
+/* 1. The Links (HR, Leave Application, etc.) */
+#navbar-breadcrumbs li a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+
+/* 2. The Active/Disabled Link (Current Page) */
+#navbar-breadcrumbs li.disabled a {
+    color: #e0e0e0 !important; /* Slightly softer white to show hierarchy */
+    cursor: default !important;
+}
+
+/* 3. The Separators (>, /, or arrows) */
+/* Frappe often uses ::after on the li for the separator */
+#navbar-breadcrumbs li::after {
+    color: #ffffff !important; 
+    opacity: 0.7 !important;
+}
+
+/* 4. Separator Fallback (If using ::before or text) */
+#navbar-breadcrumbs li {
+    color: #ffffff !important;
+}
 
 /* =========================================
    NEW: BUTTON THEME (simplyask Orange)
    ========================================= */
 
-/* --- 1. TARGET ALL BUTTONS (Primary, Secondary, Default) --- */
-/* We group all selectors together to force them to look identical */
-button.btn-primary, .btn-primary, .primary-action,
-button.btn-secondary, .btn-secondary,
-button.btn-default, .btn-default {
-    background-color: #ff9205 !important; /* HiBob Orange */
-    border-color: #ff9205 !important;     /* Orange Border */
-    color: #242424 !important;            /* Dark/Black Text */
-    fill: #242424 !important;             /* Icon Color */
+/* --- 1. PRIMARY BUTTONS (Orange + White Text) --- */
+button.btn-primary, .btn-primary, .primary-action {
+    background-color: #ff9205 !important; /* Your Orange */
+    border-color: #ff9205 !important;
+    color: #ffffff !important;            /* White Text */
     font-weight: 600 !important;
     box-shadow: none !important;
-    text-shadow: none !important;
     transition: background-color 0.2s ease;
 }
 
-/* --- 2. HOVER STATE (For All Buttons) --- */
-/* Slightly darker orange on hover */
-button.btn-primary:hover, .btn-primary:hover, .primary-action:hover,
-button.btn-secondary:hover, .btn-secondary:hover,
-button.btn-default:hover, .btn-default:hover {
-    background-color: #e58204 !important; 
-    border-color: #e58204 !important;
-    color: #000000 !important; /* Pure Black Text on Hover */
+/* Primary Hover */
+button.btn-primary:hover, .btn-primary:hover, .primary-action:hover {
+    background-color: #e58204 !important; /* Darker Orange */
+    color: #ffffff !important;
 }
 
-/* --- 3. ICON FIX (Force Black Icons) --- */
-/* Ensures SVG icons inside any button are black, not white */
-.btn-primary svg, .btn-secondary svg, .btn-default svg,
-.btn-primary .icon, .btn-secondary .icon, .btn-default .icon,
-.primary-action svg {
-    stroke: #242424 !important;
+/* Fix Icons in Primary (Make them White) */
+.btn-primary svg, .btn-primary .icon, .primary-action svg {
+    stroke: #ffffff !important;
+    fill: none !important;
+}
+
+/* --- 2. SECONDARY BUTTONS (Blue + White Text) --- */
+button.btn-secondary, .btn-secondary {
+    background-color: #1A73E8 !important; /* Standard Tech Blue */
+    border-color: #1A73E8 !important;
+    color: #ffffff !important;            /* White Text */
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s ease;
+}
+
+/* Secondary Hover */
+button.btn-secondary:hover, .btn-secondary:hover {
+    background-color: #1557b0 !important; /* Darker Blue */
+    color: #ffffff !important;
+}
+
+/* Fix Icons in Secondary (Make them White) */
+.btn-secondary svg, .btn-secondary .icon {
+    stroke: #ffffff !important;
     fill: none !important;
 }
 
@@ -170,4 +220,44 @@ button.btn-default:hover, .btn-default:hover {
     border-radius: 6px !important;
     transform: translateY(-1px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important;
+}
+
+/* =========================================
+   NEW: LIST VIEW AVATARS 
+   ========================================= */
+
+/* 1. The Image (If user has a photo) */
+.list-avatar-img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important; /* Makes it round */
+    object-fit: cover !important;  /* Prevents stretching */
+    margin-right: 12px !important; /* Space between img and name */
+    vertical-align: middle !important;
+    border: 2px solid #ffffff !important; /* White ring effect */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+/* 2. The Placeholder (If no photo -> Orange Circle) */
+.list-avatar-placeholder {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    background-color: #ff9205 !important; /* Your Theme Orange */
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin-right: 12px !important;
+    vertical-align: middle !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+/* 3. Text Alignment */
+/* Ensures the name text sits nicely next to the avatar */
+.list-row-col span {
+    vertical-align: middle !important;
+    font-weight: 500 !important;
 }
