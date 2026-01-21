@@ -78,14 +78,6 @@ function inject_banner_html($container) {
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* Dark overlay to make text readable */
-        .simplyask-banner::before {
-            content: ""; 
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.25); /* Subtle darkness */
-            border-radius: 12px;
-        }
-
         .hero-content { 
             position: relative; 
             z-index: 2; 

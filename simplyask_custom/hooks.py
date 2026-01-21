@@ -27,7 +27,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 app_include_css = "/assets/simplyask_custom/css/navbar.css"
-app_include_js = ["/assets/simplyask_custom/js/home_banner_injection.js"]
+app_include_js = ["/assets/simplyask_custom/js/home_banner_injection.js", "/assets/simplyask_custom/js/sidebar_custom.js"]
 
 fixtures = [
     {"dt": "Website Settings", "filters": [["name", "=", "Website Settings"]]}
@@ -35,7 +35,7 @@ fixtures = [
 
 # include js, css files in header of web template
 web_include_css = "/assets/simplyask_custom/css/loginPage.css"
-# web_include_js = "/assets/simplyask_custom/js/simplyask_custom.js"
+web_include_js = "/assets/simplyask_custom/js/login_custom.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "simplyask_custom/public/scss/website"
