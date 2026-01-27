@@ -278,3 +278,145 @@ button.btn-secondary:hover, .btn-secondary:hover {
     vertical-align: middle !important;
     font-weight: 500 !important;
 }
+
+/* --- 1. HIDE CLUTTER (Only on Employee List) --- */
+
+/* Hide Sidebar & Filters */
+[data-page-route="List/Employee/List"] .layout-side-section {
+    display: none !important;
+}
+
+/* Hide Sidebar Toggle Icon */
+[data-page-route="List/Employee/List"] .sidebar-toggle-placeholder, 
+[data-page-route="List/Employee/List"] .sidebar-toggle-btn {
+    display: none !important;
+}
+
+/* Hide Checkboxes */
+[data-page-route="List/Employee/List"] .list-check-all,
+[data-page-route="List/Employee/List"] .list-row-checkbox,
+[data-page-route="List/Employee/List"] .select-like {
+    display: none !important;
+}
+
+/* Hide Right-side Meta (Heart, Date, Comments) */
+[data-page-route="List/Employee/List"] .level-right {
+    display: none !important;
+}
+
+/* Hide Extra Border Div (Fixes double line) */
+[data-page-route="List/Employee/List"] .list-row-border {
+    display: none !important;
+}
+
+/* --- 2. LAYOUT & ALIGNMENT --- */
+
+/* Expand Main Content to Full Width */
+[data-page-route="List/Employee/List"] .layout-main-section-wrapper,
+[data-page-route="List/Employee/List"] .layout-main-section {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Force Header and Row Containers to align perfectly */
+[data-page-route="List/Employee/List"] .list-row-head .level-left,
+[data-page-route="List/Employee/List"] .list-row .level-left {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    display: flex !important;
+}
+
+/* --- 3. HEADER STYLING --- */
+[data-page-route="List/Employee/List"] .list-row-head {
+    background-color: #F9FAFB !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    height: 45px !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+    padding: 0 20px !important;
+}
+
+/* Header Text */
+[data-page-route="List/Employee/List"] .list-header-subject span, 
+[data-page-route="List/Employee/List"] .list-header-item {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #718096 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* --- 4. ROW STYLING --- */
+[data-page-route="List/Employee/List"] .list-row-container {
+    border-bottom: 1px solid #EBF1F5 !important;
+    padding: 12px 20px !important;
+    transition: background 0.2s;
+}
+
+[data-page-route="List/Employee/List"] .list-row-container:hover {
+    background-color: #F8FAFC !important;
+}
+
+/* Row Text */
+[data-page-route="List/Employee/List"] .list-row-col {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    color: #2D3748 !important;
+    vertical-align: middle !important;
+}
+
+/* Name Column */
+[data-page-route="List/Employee/List"] .list-subject {
+    font-weight: 600 !important;
+    color: #1A202C !important;
+    padding-left: 0 !important;
+}
+
+/* --- 5. AVATAR --- */
+[data-page-route="List/Employee/List"] .custom-avatar, 
+[data-page-route="List/Employee/List"] .avatar-small {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    margin-right: 12px !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+/* =========================================
+   COLUMN WIDTH CONTROL
+   ========================================= */
+
+/* 1. Name Column (First visible column) */
+[data-page-route="List/Employee/List"] .list-row-col:first-child,
+[data-page-route="List/Employee/List"] .list-subject {
+    flex: 0 0 30% !important;  /* Give Name ~30% width */
+    max-width: 30% !important;
+}
+
+/* 2. Branch (2nd Column) */
+[data-page-route="List/Employee/List"] .list-row-col:nth-child(3) {
+    flex: 0 0 15% !important;
+    max-width: 15% !important;
+}
+
+/* 3. Department (3rd Column) */
+[data-page-route="List/Employee/List"] .list-row-col:nth-child(4) {
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+}
+
+/* 4. Designation (4th Column) */
+[data-page-route="List/Employee/List"] .list-row-col:nth-child(5) {
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+}
+
+/* 5. ID (Last Column) */
+[data-page-route="List/Employee/List"] .list-row-col:last-child {
+    flex: 0 0 15% !important;
+    max-width: 15% !important;
+}
