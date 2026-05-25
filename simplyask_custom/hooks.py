@@ -27,7 +27,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 app_include_css = "/assets/simplyask_custom/css/navbar.css"
-app_include_js = ["/assets/simplyask_custom/js/home_banner_injection.js", "/assets/simplyask_custom/js/sidebar_custom.js", "/assets/simplyask_custom/js/calendar_color_fix.js"]
+app_include_js = ["/assets/simplyask_custom/js/avatar_color.js", "/assets/simplyask_custom/js/home_banner_injection.js", "/assets/simplyask_custom/js/sidebar_custom.js", "/assets/simplyask_custom/js/calendar_color_fix.js"]
 
 fixtures = [
     {"dt": "Website Settings", "filters": [["name", "=", "Website Settings"]]}

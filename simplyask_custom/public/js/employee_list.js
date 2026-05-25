@@ -37,20 +37,26 @@ function renderEmployeeAvatars(listview) {
             'vertical-align': 'middle'
         });
 
-        // Generate Avatar (Image or Initials)
+        // Generate Avatar (Image or Initials with hash-based color)
         var avatarHtml = "";
         if (doc.image) {
             avatarHtml = `
                 <img src="${doc.image}" class="custom-avatar" style="
-                    width: 24px; height: 24px; border-radius: 50%; margin-right: 8px; 
+                    width: 24px; height: 24px; border-radius: 50%; margin-right: 8px;
                     object-fit: cover; flex-shrink: 0; border: 1px solid #e2e2e2;
                 ">`;
         } else {
-            var initials = frappe.get_abbr(doc.employee_name || doc.name) || "E";
+            var displayName = doc.employee_name || doc.name;
+            var initials = (window.simplyask_initials && window.simplyask_initials(displayName))
+                || frappe.get_abbr(displayName) || "E";
+            // Hash-based color: each person gets a stable unique color so the
+            // list feels lively (HiBob-style) instead of a wall of orange.
+            var bg = (window.simplyask_avatar_color && window.simplyask_avatar_color(displayName))
+                || '#ff9205';
             avatarHtml = `
                 <span class="custom-avatar" style="
-                    width: 24px; height: 24px; border-radius: 50%; background: #ff9205; 
-                    color: white; display: flex; align-items: center; justify-content: center; 
+                    width: 24px; height: 24px; border-radius: 50%; background: ${bg};
+                    color: white; display: flex; align-items: center; justify-content: center;
                     font-size: 10px; font-weight: 600; margin-right: 8px; flex-shrink: 0;
                 ">
                     ${initials}

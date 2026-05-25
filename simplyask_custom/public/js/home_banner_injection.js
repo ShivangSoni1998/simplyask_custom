@@ -76,10 +76,14 @@ function inject_team_updates_html() {
         }
     ];
 
-    const card_html = (post) => `
+    const card_html = (post) => {
+        // Hash-based color per author so each post avatar feels distinct
+        const bg = (window.simplyask_avatar_color && window.simplyask_avatar_color(post.author))
+            || '#ff9205';
+        return `
         <div class="post-card">
             <div class="post-header">
-                <div class="post-avatar">${post.avatar}</div>
+                <div class="post-avatar" style="background:${bg};">${post.avatar}</div>
                 <div class="post-meta">
                     <div class="post-author">${post.author}</div>
                     <div class="post-time">${post.time}</div>
@@ -107,6 +111,7 @@ function inject_team_updates_html() {
             </div>
         </div>
     `;
+    };
 
     const team_updates_html = `
         <div id="simplyask-team-updates" class="simplyask-team-updates">

@@ -543,7 +543,9 @@ button[class*="btn-info"]:hover,
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #FF9205 0%, #FFB347 100%);
+    /* Background is set inline per-post via the hash-color utility so each
+       author gets a stable unique color. Brand orange is the fallback. */
+    background: #FF9205;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -641,5 +643,165 @@ button[class*="btn-info"]:hover,
 
 .simplyask-team-updates .post-action-btn .action-icon {
     font-size: 16px;
+}
+
+/* =========================================
+   GENERIC LIST POLISH (Quick win #5)
+   Apply the Employee-List visual treatment to ALL list views
+   (Leave Application, Attendance, Holiday List, Leave Allocation,
+   Employee Onboarding, etc.) so the whole HR module feels cohesive.
+
+   We keep the route-specific "hide clutter" rules above scoped to
+   Employee List only (since hiding the filter sidebar everywhere
+   might be too aggressive), but apply header/row/avatar typography
+   and styling globally.
+   ========================================= */
+
+/* List header — soft grey background, uppercase muted labels */
+.list-row-head {
+    background-color: #F9FAFB !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+}
+
+.list-header-subject span,
+.list-header-item {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #718096 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* List rows — hairline dividers, subtle hover lift */
+.list-row-container {
+    border-bottom: 1px solid #EBF1F5 !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.list-row-container:hover {
+    background-color: #F8FAFC !important;
+}
+
+/* Row text — softer dark, slightly larger */
+.list-row-col {
+    font-size: 14px !important;
+    color: #2D3748 !important;
+    vertical-align: middle !important;
+}
+
+/* Subject column (the link cell) — bolder, near-black */
+.list-subject {
+    font-weight: 600 !important;
+    color: #1A202C !important;
+}
+
+/* Status indicators (pill-style "Open", "Approved", "Submitted" etc.) */
+.indicator-pill {
+    border-radius: 999px !important;
+    padding: 3px 12px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: none !important;
+}
+
+/* =========================================
+   DASHBOARD NUMBER CARDS (Quick win #4)
+   HiBob-style polish for the small KPI tiles on workspace pages.
+   Frappe renders them as .number-card-widget-box (or similar). We
+   target broad selectors so it works across versions.
+   ========================================= */
+
+.number-widget-box,
+.widget.number-card,
+.number-card-widget-box,
+.dashboard-widget-box .number-card {
+    background: #ffffff !important;
+    border: 1px solid #ECEEF1 !important;
+    border-radius: 12px !important;
+    padding: 18px 20px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.number-widget-box:hover,
+.widget.number-card:hover,
+.number-card-widget-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* The big number itself — large, bold, near-black */
+.number-widget-box .widget-title,
+.number-widget-box .number,
+.widget.number-card .widget-title,
+.widget.number-card .number,
+.number-card-widget-box .number {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #1A202C !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+}
+
+/* The small label / description below */
+.number-widget-box .widget-label,
+.number-widget-box .widget-subtitle,
+.widget.number-card .widget-label,
+.number-card-widget-box .widget-label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #718096 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 6px !important;
+}
+
+/* Trend indicator (the ↑ +12% / ↓ -3% chip Frappe shows) */
+.number-widget-box .widget-trend.indicator-pill,
+.number-card-widget-box .indicator-pill {
+    border-radius: 999px !important;
+    padding: 3px 10px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    background: #F0FDF4 !important;
+    color: #15803D !important;
+    border: none !important;
+}
+
+.number-widget-box .widget-trend.red,
+.number-widget-box .indicator-pill.red {
+    background: #FEF2F2 !important;
+    color: #B91C1C !important;
+}
+
+/* Chart widget cards (e.g. "Hiring vs Attrition Count") — same polish */
+.widget.chart-widget-box,
+.chart-widget-box {
+    background: #ffffff !important;
+    border: 1px solid #ECEEF1 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+    transition: box-shadow 0.15s ease !important;
+}
+
+.widget.chart-widget-box:hover,
+.chart-widget-box:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05) !important;
+}
+
+.widget.chart-widget-box .widget-title,
+.chart-widget-box .widget-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #1A202C !important;
+}
+
+.widget.chart-widget-box .widget-subtitle,
+.chart-widget-box .widget-subtitle {
+    font-size: 12px !important;
+    color: #718096 !important;
 }
 
