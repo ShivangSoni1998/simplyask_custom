@@ -140,10 +140,10 @@ button.btn-primary:hover, .btn-primary:hover, .primary-action:hover {
     fill: none !important;
 }
 
-/* --- 2. SECONDARY BUTTONS (Blue + White Text) --- */
+/* --- 2. SECONDARY BUTTONS (Orange + White Text — matches primary) --- */
 button.btn-secondary, .btn-secondary {
-    background-color: #1A73E8 !important; /* Standard Tech Blue */
-    border-color: #1A73E8 !important;
+    background-color: #ff9205 !important; /* SimplyAsk Orange */
+    border-color: #ff9205 !important;
     color: #ffffff !important;            /* White Text */
     font-weight: 600 !important;
     box-shadow: none !important;
@@ -152,7 +152,7 @@ button.btn-secondary, .btn-secondary {
 
 /* Secondary Hover */
 button.btn-secondary:hover, .btn-secondary:hover {
-    background-color: #1557b0 !important; /* Darker Blue */
+    background-color: #e58204 !important; /* Darker Orange */
     color: #ffffff !important;
 }
 
@@ -160,6 +160,27 @@ button.btn-secondary:hover, .btn-secondary:hover {
 .btn-secondary svg, .btn-secondary .icon {
     stroke: #ffffff !important;
     fill: none !important;
+}
+
+/* --- 3. CATCH-ALL: any remaining blue buttons in Frappe core
+   (btn-info, btn-primary-light, etc. — common Frappe blues used
+   on Save/Submit/Action menus) — force orange + white text. */
+button[class*="btn-info"],
+.btn-info,
+.btn-primary-light,
+button.btn[style*="background-color: #1a73e8"],
+button.btn[style*="background-color: #2490EF"],
+button.btn[style*="background-color: #3b82f6"] {
+    background-color: #ff9205 !important;
+    border-color: #ff9205 !important;
+    color: #ffffff !important;
+}
+
+button[class*="btn-info"]:hover,
+.btn-info:hover,
+.btn-primary-light:hover {
+    background-color: #e58204 !important;
+    color: #ffffff !important;
 }
 
 
@@ -420,3 +441,205 @@ button.btn-secondary:hover, .btn-secondary:hover {
     flex: 0 0 15% !important;
     max-width: 15% !important;
 }
+
+/* =========================================
+   HR-ONLY SIDEBAR (HR request 1)
+   Hide every top-level workspace item except HR.
+   Children of HR (Employee, Leaves, etc.) stay visible.
+   ========================================= */
+.desk-sidebar .standard-sidebar-section > .sidebar-item-container:not([item-name="HR"]) {
+    display: none !important;
+}
+
+/* Hide the "Public" section toggle button label since HR is now the
+   only item — the section header feels redundant. */
+.desk-sidebar .standard-sidebar-section[data-title="Public"] > .standard-sidebar-label {
+    display: none !important;
+}
+
+/* --- HR FLATTENED VIEW ---
+   Hide the "HR" parent row (the expandable header with chevron) and
+   force its children (Recruitment, Employee Lifecycle, Performance,
+   Expense Claims, Leaves, Leave Calendar) to render as if they were
+   top-level items: always visible, no left indent. */
+
+/* 1. Hide the HR parent row itself */
+.desk-sidebar .sidebar-item-container[item-name="HR"] > .standard-sidebar-item {
+    display: none !important;
+}
+
+/* 2. Force HR's nested child container to always be visible
+   (no expand/collapse needed since the parent is gone) */
+.desk-sidebar .sidebar-item-container[item-name="HR"] > .sidebar-child-item.nested-container {
+    display: block !important;
+    height: auto !important;
+}
+
+/* 3. Flatten the children — remove the extra left indent that Frappe
+   normally applies to nested items */
+.desk-sidebar .sidebar-item-container[item-name="HR"] .sidebar-child-item .standard-sidebar-item {
+    padding-left: 12px !important;
+    margin-left: 0 !important;
+}
+
+/* 4. Remove "Shift & Attendance" entirely.
+   Targeting by item-name attribute. If this exact string doesn't match,
+   we'll switch to a label-text selector. */
+.desk-sidebar .sidebar-item-container[item-name="Shift & Attendance"],
+.desk-sidebar .sidebar-item-container[item-name="Shift and Attendance"],
+.desk-sidebar .sidebar-item-container[item-name="Shift Attendance"] {
+    display: none !important;
+}
+
+/* --- SIDEBAR TYPOGRAPHY (bring back the larger, polished font sizes
+   from the dark-theme experiment — colors stay light/default, only
+   sizing and weight are restored). */
+
+/* Item labels — slightly larger and a touch bolder than Frappe default */
+.desk-sidebar .standard-sidebar-item .item-anchor,
+.desk-sidebar .standard-sidebar-item .sidebar-item-label {
+    font-weight: 500 !important;
+    font-size: 14px !important;
+}
+
+/* Section header labels (e.g. "PUBLIC") — uppercase, spaced, smaller */
+.desk-sidebar .standard-sidebar-label,
+.standard-sidebar-section .standard-sidebar-label {
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.8px !important;
+    padding: 16px 14px 8px !important;
+    margin-bottom: 2px !important;
+}
+
+/* =========================================
+   TEAM UPDATES CARDS (HR request 2)
+   HiBob-style post cards injected on /app/home
+   by home_banner_injection.js. Multiple posts supported.
+   Reactions row is rendered only if reactions exist.
+   ========================================= */
+.simplyask-team-updates {
+    margin: 24px 0;
+}
+
+.simplyask-team-updates .post-card {
+    background: #ffffff;
+    border: 1px solid #ECEEF1;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    margin-bottom: 16px;
+}
+
+.simplyask-team-updates .post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.simplyask-team-updates .post-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF9205 0%, #FFB347 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.simplyask-team-updates .post-author {
+    font-weight: 700;
+    font-size: 15px;
+    color: #1F272E;
+    line-height: 1.2;
+}
+
+.simplyask-team-updates .post-time {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 2px;
+}
+
+.simplyask-team-updates .post-body {
+    color: #2A2D3A;
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+}
+
+.simplyask-team-updates .post-body p {
+    margin: 8px 0;
+}
+
+.simplyask-team-updates .post-body a.mention {
+    color: #2563EB;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.simplyask-team-updates .post-body a.mention:hover {
+    text-decoration: underline;
+}
+
+.simplyask-team-updates .post-body .see-more {
+    color: #6B7280;
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.simplyask-team-updates .post-reactions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #F3F4F6;
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.simplyask-team-updates .reactions-emojis {
+    font-size: 14px;
+    letter-spacing: -3px;
+    margin-right: 6px;
+}
+
+.simplyask-team-updates .post-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #F3F4F6;
+}
+
+.simplyask-team-updates .post-action-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #4B5563;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background-color 0.15s ease;
+}
+
+.simplyask-team-updates .post-action-btn:hover {
+    background-color: #F3F4F6;
+    color: #1F272E;
+}
+
+.simplyask-team-updates .post-action-btn .action-icon {
+    font-size: 16px;
+}
+

@@ -1,16 +1,18 @@
 frappe.router.on('change', () => {
     try {
         setup_simplyask_banner();
+        setup_team_updates();
     } catch (e) {
-        console.warn("SimplyAsk Banner Error:", e);
+        console.warn("SimplyAsk Home Injection Error:", e);
     }
 });
 
 $(document).ready(() => {
     try {
         setup_simplyask_banner();
+        setup_team_updates();
     } catch (e) {
-        console.warn("SimplyAsk Banner Error:", e);
+        console.warn("SimplyAsk Home Injection Error:", e);
     }
 });
 
@@ -21,7 +23,7 @@ function setup_simplyask_banner() {
 
     // 2. Identify the target container
     let $container = $('.layout-main-section');
-    
+
     // 3. LOGIC
     if (is_home) {
         if ($('#simplyask-banner').length === 0) {
@@ -29,6 +31,94 @@ function setup_simplyask_banner() {
         }
     } else {
         $('#simplyask-banner').remove();
+    }
+}
+
+function setup_team_updates() {
+    let route = frappe.get_route();
+    let is_home = (route[0] === 'Workspaces' && route[1] === 'Home');
+
+    if (is_home) {
+        if ($('#simplyask-team-updates').length === 0) {
+            inject_team_updates_html();
+        }
+    } else {
+        $('#simplyask-team-updates').remove();
+    }
+}
+
+function inject_team_updates_html() {
+    // Hardcoded posts for now (UI mock — no real BE wiring).
+    // Order: newest first. Each post is data-driven so adding/editing
+    // posts is straightforward — just edit this array.
+    const posts = [
+        {
+            author: 'Simplexiar and SimplyAsk Family',
+            avatar: 'SA',
+            time: 'May 14, 2026, 2:17 PM',
+            body: `<p>Happy Victoria Day to our Canadian colleagues! They will be observing this day on Monday May 18th. Enjoy the spring weather!</p>`
+        },
+        {
+            author: 'Simplexiar and SimplyAsk Family',
+            avatar: 'SA',
+            time: 'Mar 31, 2026, 7:56 PM',
+            body: `<p>Good Friday is the best Friday! Our Canadian colleagues will be observing this holiday on April 3rd. Enjoy your time off!</p>`
+        },
+        {
+            author: 'Shuli Gortler',
+            avatar: 'SG',
+            time: 'Mar 8, 2026, 2:22 PM',
+            body: `<p>Happy International Women's Day!</p>
+                   <p>Today we celebrate the incredible women on our team and around the world — your talent, leadership, resilience, and the impact you make every day.<br>
+                   Thank you for everything you bring to our workplace and community.</p>
+                   <span class="see-more">See more...</span>`,
+            reactions: { emojis: '👍 🌷 🤩', count: 4 }
+        }
+    ];
+
+    const card_html = (post) => `
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">${post.avatar}</div>
+                <div class="post-meta">
+                    <div class="post-author">${post.author}</div>
+                    <div class="post-time">${post.time}</div>
+                </div>
+            </div>
+            <div class="post-body">${post.body}</div>
+            ${post.reactions ? `
+                <div class="post-reactions">
+                    <div>
+                        <span class="reactions-emojis">${post.reactions.emojis}</span>
+                        <span>${post.reactions.count}</span>
+                    </div>
+                    ${post.reactions.comments ? `<span>${post.reactions.comments} comments</span>` : ''}
+                </div>
+            ` : ''}
+            <div class="post-actions">
+                <button class="post-action-btn">
+                    <span class="action-icon">😀</span>
+                    <span>React</span>
+                </button>
+                <button class="post-action-btn">
+                    <span class="action-icon">💬</span>
+                    <span>Comment</span>
+                </button>
+            </div>
+        </div>
+    `;
+
+    const team_updates_html = `
+        <div id="simplyask-team-updates" class="simplyask-team-updates">
+            ${posts.map(card_html).join('')}
+        </div>
+    `;
+
+    let $banner = $('#simplyask-banner');
+    if ($banner.length > 0) {
+        $banner.after(team_updates_html);
+    } else {
+        $('.layout-main-section').prepend(team_updates_html);
     }
 }
 

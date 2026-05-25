@@ -4,6 +4,7 @@ frappe.router.on('change', () => {
     // Wait a brief moment for the sidebar to render after route change
     setTimeout(() => {
         inject_leave_calendar_link();
+        auto_expand_hr();
     }, 200);
 });
 
@@ -11,8 +12,22 @@ $(document).ready(() => {
     // Also run on initial full page load
     setTimeout(() => {
         inject_leave_calendar_link();
+        auto_expand_hr();
     }, 500);
 });
+
+function auto_expand_hr() {
+    // The HR parent row is now hidden via CSS and the nested-container
+    // is forced visible (block + height auto). This function remains as
+    // a defensive fallback in case Frappe re-collapses on route change.
+    let $hr = $('.sidebar-item-container[item-name="HR"]').first();
+    if ($hr.length === 0) return;
+
+    let $nested = $hr.children('.sidebar-child-item.nested-container').first();
+    if ($nested.length === 0) return;
+
+    $nested.removeClass('hidden is-hidden').show();
+}
 
 function inject_leave_calendar_link() {
     // 1. Identify the "Leaves" sidebar item using the specific attribute from your HTML
