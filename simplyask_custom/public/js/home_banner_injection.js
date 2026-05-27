@@ -53,13 +53,13 @@ function inject_team_updates_html() {
     // posts is straightforward — just edit this array.
     const posts = [
         {
-            author: 'Simplexiar and SimplyAsk Family',
+            author: 'SimplyAsk Family',
             avatar: 'SA',
             time: 'May 14, 2026, 2:17 PM',
             body: `<p>Happy Victoria Day to our Canadian colleagues! They will be observing this day on Monday May 18th. Enjoy the spring weather!</p>`
         },
         {
-            author: 'Simplexiar and SimplyAsk Family',
+            author: 'SimplyAsk Family',
             avatar: 'SA',
             time: 'Mar 31, 2026, 7:56 PM',
             body: `<p>Good Friday is the best Friday! Our Canadian colleagues will be observing this holiday on April 3rd. Enjoy your time off!</p>`
